@@ -153,6 +153,8 @@ PRODUCT_PACKAGES += \
     IPACM_cfg.xml \
     ipacm
 
+TARGET_HAS_IPA_IN_DEVTREE := true
+
 # IRQ
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/msm_irqbalance_little_big.conf:system/vendor/etc/msm_irqbalance_little_big.conf

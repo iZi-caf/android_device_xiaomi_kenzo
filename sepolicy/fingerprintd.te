@@ -4,3 +4,18 @@ allow fingerprintd fpc_data_file:dir create_dir_perms;
 allow fingerprintd fpc_data_file:sock_file { create unlink };
 
 allow fingerprintd fpc_sysfs:file rw_file_perms;
+
+# For Goodix fingerprint
+binder_call(fingerprintd, gx_fpd);
+allow fingerprintd gx_fpd_service:service_manager find;
+
+allow fingerprintd gx_fpd_lib_file:file { getattr read execute execmod r_file_perms };
+allow fingerprintd gx_fpd_lib_file:chr_file { r_file_perms setattr };
+allow fingerprintd gx_fp_lib_file:file rx_file_perms;
+allow fingerprintd gx_fp_lib_file:chr_file { r_file_perms setattr };
+
+allow fingerprintd gx_fpd_data_file:file { create write rw_file_perms getattr read execute execmod };
+allow fingerprintd gx_fpd_data_file:chr_file { r_file_perms setattr };
+
+allow fingerprintd gx_fpd_data_file:dir { open read write search remove_name add_name };
+allow fingerprintd gx_fpd_data_file:file { read write open unlink };

@@ -1,1 +1,7 @@
 allow init fpc_socket:sock_file create_file_perms;
+
+allow init gx_fpd_data_file:dir { relabelto getattr read open search };
+allow init gx_fpd_data_file:file { relabelto getattr open read write relabelfrom };
+allow init gx_fpd_device:chr_file { write ioctl };
+allow init gx_fpd_exec:file { read getattr open execute execute_no_trans };
+allow init tee_device:chr_file { write ioctl };
